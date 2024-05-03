@@ -22,7 +22,7 @@ def plot(x, y, theta0='none', theta1='none'):
 	plt.show()
 
 def errorPercentage(y, y_hat):
-	return np.sum(np.abs(y - y_hat) / y * 100) / len(y)
+	return np.sum(np.abs(y - y_hat) / y) * 100 / len(y)
 
 def rootMeanSquaredError(y, y_hat):
 	n = len(y)
@@ -75,11 +75,13 @@ def train():
 	
 	plot(x, y, theta0, theta1)
 
-	print(f'rootMeanSquaredError:{rootMeanSquaredError(y, estimatePrice(x, theta0, theta1))}\n')
+	print(f'rootMeanSquaredError:{rootMeanSquaredError(y, estimatePrice(x, theta0, theta1)):.2f}\n')
 	
 	print(f'precision:{precision(y, estimatePrice(x, theta0, theta1)) * 100:.2f}%\n')
 
 	print(f'error percentage:{errorPercentage(y, estimatePrice(x, theta0, theta1)):.2f}%\n')
+
+	#print (f'error+precision:{e+p}')
  
 	print(f'theta0: {theta0}  theta1: {theta1}' )
 	with open('thetas.csv', 'w') as f:
