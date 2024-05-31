@@ -3,6 +3,7 @@ import numpy as np
 
 from matplotlib import pyplot as plt
 from predict import estimatePrice
+from precision import precision
 
 def rmse_plot(y):
 	plt.title('Error curve (root mean squared error)')
@@ -27,9 +28,6 @@ def errorPercentage(y, y_hat):
 def rootMeanSquaredError(y, y_hat):
 	n = len(y)
 	return np.sqrt((1 / n) * np.sum((y - y_hat)**2))
-
-def precision(y, y_hat):
-	return 1 - (np.sum(np.abs(y - y_hat)) / np.sum(y))
 
 def normalize(x):
 	return (x - x.min()) / (x.max() - x.min())
@@ -81,8 +79,6 @@ def train():
 
 	print(f'error percentage:{errorPercentage(y, estimatePrice(x, theta0, theta1)):.2f}%\n')
 
-	#print (f'error+precision:{e+p}')
- 
 	print(f'theta0: {theta0}  theta1: {theta1}' )
 	with open('thetas.csv', 'w') as f:
 		f.write("{},{}".format(theta0, theta1))

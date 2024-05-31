@@ -8,6 +8,12 @@ init:
 train:
 	python3 train.py
 
+predict:
+	python3 predict.py
+
+precision:
+	python3 precision.py
+
 clean:
 	rm -rf  thetas.csv
 	rm -rf	rmse_plot.png
