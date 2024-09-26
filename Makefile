@@ -21,3 +21,4 @@ clean:
 
 fclean: clean
 		rm -rf Pipfile.lock
+		rm -rf __pycache__
